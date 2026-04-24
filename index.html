@@ -1,0 +1,545 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>オンラインオフ会 2026-04-24 | TechFrontier</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', 'Noto Sans JP', 'Yu Gothic', sans-serif;
+      background: #fff;
+      color: #333;
+      font-size: 16px;
+      line-height: 1.8;
+    }
+
+    /* ===== HEADER ===== */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: #fff;
+      border-bottom: 1px solid #e8e8e8;
+      padding: 0 1.5rem;
+      height: 60px;
+      display: flex;
+      align-items: center;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      text-decoration: none;
+    }
+
+    .logo img {
+      height: 36px;
+      width: auto;
+    }
+
+    /* ===== HERO ===== */
+    .hero {
+      position: relative;
+      background: #1e3a5f url('https://tech-frontier.co.jp/wp-content/uploads/2024/11/TechFrontier-PC-Header.jpg') center/cover no-repeat;
+      min-height: 440px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 4rem 1.5rem;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: rgba(15, 30, 55, 0.62);
+    }
+
+    .hero-inner {
+      position: relative;
+      z-index: 1;
+      max-width: 680px;
+    }
+
+    .hero-eyebrow {
+      display: inline-block;
+      background: #43b244;
+      color: #fff;
+      font-size: .75rem;
+      font-weight: 700;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      padding: .35rem 1.1rem;
+      border-radius: 2px;
+      margin-bottom: 1.2rem;
+    }
+
+    .hero h1 {
+      font-size: clamp(1.7rem, 5vw, 2.8rem);
+      font-weight: 900;
+      color: #fff;
+      line-height: 1.3;
+      letter-spacing: -.01em;
+      margin-bottom: .8rem;
+    }
+
+    .hero-date {
+      color: rgba(255,255,255,.75);
+      font-size: .95rem;
+      letter-spacing: .06em;
+    }
+
+    /* ===== CONTAINER ===== */
+    .container {
+      max-width: 780px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+    }
+
+    /* ===== SECTION BASE ===== */
+    .section {
+      padding: 4rem 1.5rem;
+    }
+
+    .section-alt {
+      background: #f7f8fa;
+    }
+
+    .section-label {
+      font-size: .72rem;
+      font-weight: 700;
+      letter-spacing: .22em;
+      text-transform: uppercase;
+      color: #43b244;
+      margin-bottom: .6rem;
+    }
+
+    .section-title {
+      font-size: clamp(1.35rem, 3.5vw, 2rem);
+      font-weight: 800;
+      color: #1a1a1a;
+      letter-spacing: -.01em;
+      margin-bottom: 1rem;
+      line-height: 1.35;
+    }
+
+    .section-body {
+      color: #555;
+      font-size: .97rem;
+      margin-bottom: 2rem;
+    }
+
+    /* ===== OVERVIEW CARDS ===== */
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+      gap: 1rem;
+      margin-top: 1.5rem;
+    }
+
+    .card {
+      background: #fff;
+      border: 1px solid #e4e6ea;
+      border-radius: 6px;
+      padding: 1.4rem 1.2rem;
+    }
+
+    .card-icon {
+      font-size: 1.6rem;
+      margin-bottom: .55rem;
+    }
+
+    .card h3 {
+      font-size: .92rem;
+      font-weight: 700;
+      color: #1a1a1a;
+      margin-bottom: .3rem;
+    }
+
+    .card p {
+      font-size: .82rem;
+      color: #777;
+      line-height: 1.6;
+    }
+
+    /* ===== TIMELINE ===== */
+    .timeline {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+      margin-top: 1.5rem;
+    }
+
+    .tl-row {
+      display: flex;
+      gap: 0;
+      position: relative;
+    }
+
+    /* 縦線 */
+    .tl-row:not(:last-child) .tl-line::after {
+      content: '';
+      position: absolute;
+      left: 50%;
+      top: 36px;
+      bottom: -4px;
+      width: 2px;
+      background: #ddd;
+      transform: translateX(-50%);
+    }
+
+    .tl-line {
+      flex: 0 0 52px;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding-top: 4px;
+    }
+
+    .tl-dot {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background: #1e3a5f;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: .7rem;
+      font-weight: 700;
+      flex-shrink: 0;
+      position: relative;
+      z-index: 1;
+    }
+
+    .tl-dot.highlight {
+      background: #43b244;
+    }
+
+    .tl-body {
+      flex: 1;
+      padding: 0 0 2rem 1rem;
+    }
+
+    .tl-num {
+      font-size: .7rem;
+      color: #999;
+      font-weight: 600;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      margin-bottom: .2rem;
+    }
+
+    .tl-title {
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: #1a1a1a;
+      margin-bottom: .25rem;
+    }
+
+    .tl-desc {
+      font-size: .88rem;
+      color: #666;
+      line-height: 1.65;
+    }
+
+    /* ===== HIGHLIGHT (LT) ===== */
+    .lt-card {
+      background: #fff;
+      border: 2px solid #43b244;
+      border-radius: 8px;
+      padding: 2.5rem 2rem;
+      text-align: center;
+      margin-top: 2rem;
+    }
+
+    .lt-label {
+      display: inline-block;
+      background: #43b244;
+      color: #fff;
+      font-size: .72rem;
+      font-weight: 700;
+      letter-spacing: .15em;
+      text-transform: uppercase;
+      padding: .3rem .9rem;
+      border-radius: 2px;
+      margin-bottom: 1rem;
+    }
+
+    .lt-card h3 {
+      font-size: clamp(1.1rem, 3vw, 1.5rem);
+      font-weight: 800;
+      color: #1a1a1a;
+      line-height: 1.4;
+      margin-bottom: .6rem;
+    }
+
+    .lt-speaker {
+      font-size: .9rem;
+      color: #555;
+    }
+
+    .lt-speaker strong {
+      color: #1e3a5f;
+      font-weight: 700;
+    }
+
+    /* ===== CTA BUTTON ===== */
+    .btn-wrap {
+      text-align: center;
+      margin: 2.5rem 0 0;
+    }
+
+    .btn {
+      display: inline-block;
+      background: #43b244;
+      color: #fff;
+      font-size: 1.05rem;
+      font-weight: 700;
+      padding: 1rem 3.5rem;
+      border-radius: 9999px;
+      text-decoration: none;
+      letter-spacing: .05em;
+      transition: opacity .2s, transform .2s;
+    }
+
+    .btn:hover {
+      opacity: .88;
+      transform: translateY(-2px);
+    }
+
+    /* ===== DIVIDER ===== */
+    hr {
+      border: none;
+      border-top: 1px solid #e8e8e8;
+      margin: 0;
+    }
+
+    /* ===== FOOTER ===== */
+    footer {
+      background: #1e3a5f;
+      color: rgba(255,255,255,.65);
+      text-align: center;
+      padding: 2rem 1.5rem;
+      font-size: .8rem;
+      letter-spacing: .04em;
+    }
+
+    footer a {
+      color: #fff;
+      text-decoration: none;
+    }
+
+    /* ===== SCROLL TO TOP ===== */
+    .scroll-top {
+      position: fixed;
+      bottom: 1.5rem;
+      right: 1.5rem;
+      width: 42px;
+      height: 42px;
+      background: #1e3a5f;
+      color: #fff;
+      border: none;
+      border-radius: 50%;
+      font-size: 1rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 2px 8px rgba(0,0,0,.2);
+      text-decoration: none;
+    }
+
+    @media (max-width: 560px) {
+      .tl-line { flex: 0 0 40px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header>
+    <a class="logo" href="#">
+      <img src="techfrontier_logo_fix-04-1024x170.png" alt="TechFrontier" />
+    </a>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-inner">
+      <span class="hero-eyebrow">Online Off-kai</span>
+      <h1>オンラインオフ会<br>2026年4月24日</h1>
+      <p class="hero-date">テクフロメンバー全員集合！</p>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section class="section">
+    <div class="container">
+      <p class="section-label">About</p>
+      <h2 class="section-title">今夜はオンラインで<br>みんなで集まろう！</h2>
+      <p class="section-body">
+        距離を超えてつながるオンラインオフ会。<br>
+        LTあり、交流あり、盛りだくさんの内容でお届けします。
+      </p>
+
+      <div class="card-grid">
+        <div class="card">
+          <div class="card-icon">🥂</div>
+          <h3>乾杯からスタート</h3>
+          <p>お気に入りの飲み物を手に、リラックスしてどうぞ。</p>
+        </div>
+        <div class="card">
+          <div class="card-icon">📰</div>
+          <h3>テクフロニュース</h3>
+          <p>最新のテクノロジートレンドをみんなで共有します。</p>
+        </div>
+        <div class="card">
+          <div class="card-icon">🎙️</div>
+          <h3>LTセッション</h3>
+          <p>松田さんのユニークなトークをお楽しみに。</p>
+        </div>
+        <div class="card">
+          <div class="card-icon">💬</div>
+          <h3>ブレイクアウト交流</h3>
+          <p>少人数グループでじっくり話せる時間もあります。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <hr />
+
+  <!-- AGENDA -->
+  <section class="section section-alt">
+    <div class="container">
+      <p class="section-label">Agenda</p>
+      <h2 class="section-title">当日のタイムライン</h2>
+      <p class="section-body">全6セッション。最初から最後まで楽しみ尽くしましょう。</p>
+
+      <div class="timeline">
+        <div class="tl-row">
+          <div class="tl-line">
+            <div class="tl-dot">1</div>
+          </div>
+          <div class="tl-body">
+            <div class="tl-num">Session 01</div>
+            <div class="tl-title">オープニング・乾杯</div>
+            <div class="tl-desc">ドリンクで乾杯！今日の流れを簡単にご紹介します。まずはリラックスしてスタートしましょう。</div>
+          </div>
+        </div>
+
+        <div class="tl-row">
+          <div class="tl-line">
+            <div class="tl-dot">2</div>
+          </div>
+          <div class="tl-body">
+            <div class="tl-num">Session 02</div>
+            <div class="tl-title">テクフロニュース</div>
+            <div class="tl-desc">テクノロジーフロンティアの最新ニュースをピックアップ。みんなで議論しながら盛り上がりましょう。</div>
+          </div>
+        </div>
+
+        <div class="tl-row">
+          <div class="tl-line">
+            <div class="tl-dot">3</div>
+          </div>
+          <div class="tl-body">
+            <div class="tl-num">Session 03</div>
+            <div class="tl-title">ブレイクアウト・チェックイン</div>
+            <div class="tl-desc">少人数グループに分かれて近況報告。最近どんなことに取り組んでいるか、ざっくばらんに話しましょう。</div>
+          </div>
+        </div>
+
+        <div class="tl-row">
+          <div class="tl-line">
+            <div class="tl-dot highlight">4</div>
+          </div>
+          <div class="tl-body">
+            <div class="tl-num">Session 04 &nbsp;—&nbsp; LT会</div>
+            <div class="tl-title">松田さん「ジムトレーナーがデータ分析を始めた話」</div>
+            <div class="tl-desc">筋肉とデータの融合？ジムトレーナーという異色の経歴からデータ分析に踏み込んだユニークな体験談。必見です！</div>
+          </div>
+        </div>
+
+        <div class="tl-row">
+          <div class="tl-line">
+            <div class="tl-dot">5</div>
+          </div>
+          <div class="tl-body">
+            <div class="tl-num">Session 05</div>
+            <div class="tl-title">ブレイクアウト交流会</div>
+            <div class="tl-desc">LT後の盛り上がりそのままに、グループを入れ替えてさらに交流を深めます。新しい仲間と話せるチャンスです。</div>
+          </div>
+        </div>
+
+        <div class="tl-row">
+          <div class="tl-line">
+            <div class="tl-dot">6</div>
+          </div>
+          <div class="tl-body">
+            <div class="tl-num">Session 06</div>
+            <div class="tl-title">クロージング・記念撮影</div>
+            <div class="tl-desc">全員でスクリーンショット記念撮影！素敵な思い出を残して今夜を締めくくりましょう。</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <hr />
+
+  <!-- LT HIGHLIGHT -->
+  <section class="section">
+    <div class="container">
+      <p class="section-label">Highlight</p>
+      <h2 class="section-title">今夜のイチオシコンテンツ</h2>
+      <p class="section-body">お見逃しなく。</p>
+
+      <div class="lt-card">
+        <span class="lt-label">Lightning Talk</span>
+        <h3>「ジムトレーナーが<br>データ分析を始めた話」</h3>
+        <p class="lt-speaker" style="margin-top:1rem;">Speaker：<strong>松田さん</strong></p>
+        <p style="margin-top:.8rem; font-size:.9rem; color:#666; line-height:1.7;">
+          フィットネスの現場からデータサイエンスへ。<br>
+          異色のキャリアが生み出すユニークな視点と実体験をお届けします。
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <hr />
+
+  <!-- CTA -->
+  <section class="section section-alt" style="text-align:center;">
+    <div class="container">
+      <p class="section-label">Join Us</p>
+      <h2 class="section-title">一緒に楽しもう！</h2>
+      <p class="section-body">
+        2026年4月24日（金）オンライン開催。<br>
+        お気に入りの飲み物を用意してお待ちください。
+      </p>
+      <div class="btn-wrap">
+        <a class="btn" href="#agenda">タイムラインを確認する</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <p>
+      <a href="https://tech-frontier.co.jp/">TechFrontier</a>
+      &nbsp;|&nbsp; オンラインオフ会 2026-04-24
+    </p>
+  </footer>
+
+  <!-- SCROLL TOP -->
+  <a class="scroll-top" href="#" aria-label="ページトップへ">↑</a>
+
+</body>
+</html>
